@@ -4,20 +4,17 @@ import "@nomicfoundation/hardhat-viem";
 import "@openzeppelin/hardhat-upgrades";
 import * as dotenv from "dotenv";
 import "hardhat-gas-reporter";
+import type { HardhatUserConfig } from "hardhat/config";
 import fs from "node:fs";
 import path from "node:path";
-import type { HardhatUserConfig } from "hardhat/config";
 
 dotenv.config();
 
 const {
   PRIVATE_KEY,
-  ETHERSCAN_API_KEY,
   ALCHEMY_API_KEY,
   COINMARKETCAP_API_KEY,
-  PRODUCTION_PRIVATE_KEY,
   BASESCAN_API_KEY,
-  GAS_REPORT,
 } = process.env;
 
 // タスクファイルを読み込むための設定
@@ -53,25 +50,14 @@ const config: HardhatUserConfig = {
     hardhat: {
       allowUnlimitedContractSize: true,
     },
-    sepolia: {
-      url: `https://eth-sepolia.g.alchemy.com/v2/${ALCHEMY_API_KEY}`,
+    baseSepolia: {
+      url: `https://base-sepolia.g.alchemy.com/v2/${ALCHEMY_API_KEY}`,
       accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
-    },
-    holesky: {
-      url: `https://eth-holesky.g.alchemy.com/v2/${ALCHEMY_API_KEY}`,
-      accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
-    },
-    base: {
-      url: `https://base-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}`,
-      accounts:
-        PRODUCTION_PRIVATE_KEY !== undefined ? [PRODUCTION_PRIVATE_KEY] : [],
     },
   },
   etherscan: {
     apiKey: {
-      sepolia: ETHERSCAN_API_KEY ?? "",
-      holesky: ETHERSCAN_API_KEY ?? "",
-      base: BASESCAN_API_KEY ?? "",
+      baseSepolia: BASESCAN_API_KEY ?? "",
     },
   },
   gasReporter: {
