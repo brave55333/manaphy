@@ -9,8 +9,7 @@
     "ignoreUnknown": false,
     "ignore": [
       "**/node_modules",
-      "**/build",
-      "**/dist",
+      "**/.next",
       "**/coverage",
       "**/temp",
       "**/tmp",
@@ -21,8 +20,6 @@
       "**/contract/artifacts",
       "**/contract/cache",
       "**/contract/test",
-      "**/subgraph/generated",
-      "**/subgraph/build",
       "**/frontend/gql",
       "**/pkgs/contract/typechain-types",
       "**/pkgs/contract/ignition"
