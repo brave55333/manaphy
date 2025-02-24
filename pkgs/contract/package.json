@@ -15,7 +15,10 @@
     "local": "npx hardhat node",
     "getBalance": "npx hardhat getBalance",
     "getChainInfo": "npx hardhat getChainInfo",
-    "getContractAddress": "npx hardhat getContractAddress"
+    "getContractAddress": "npx hardhat getContractAddress",
+    "createSplit": "npx hardhat createSplit",
+    "getSplitBalance": "npx hardhat getSplitBalance",
+    "distribute": "npx hardhat distribute"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-ethers": "^3.0.0",
@@ -40,7 +43,8 @@
     "solidity-coverage": "^0.8.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3",
-    "viem": "^2.20.1"
+    "viem": "^2.20.1",
+    "@0xsplits/splits-sdk": "^5.0.0"
   },
   "dependencies": {
     "@openzeppelin/hardhat-upgrades": "^3.9.0",

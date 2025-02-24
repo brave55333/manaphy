@@ -32,6 +32,24 @@
   yarn contract deploy:SplitFactories --network baseSepolia
   ```
 
+- **Splitコントラクトの作成**
+
+  ```bash
+  yarn contract createSplit --network baseSepolia
+  ```
+
+- **Splitコントラクトのトークンの残高確認**
+
+  ```bash
+  yarn contract getSplitBalance --network baseSepolia
+  ```
+
+- **Splitコントラクトを使ってトークンを分配する**
+
+  ```bash
+  yarn contract distribute --network baseSepolia
+  ```
+
 - **フロントエンドのビルド**
 
   ```bash
