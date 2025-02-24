@@ -1,3 +1,6 @@
 {
-  "LockModule#Lock": "0x18c8513d184a327c7F5A25cC18a5A33f4d6dbd33"
+  "LockModule#Lock": "0x18c8513d184a327c7F5A25cC18a5A33f4d6dbd33",
+  "SplitModule#SplitsWarehouse": "0x47E996488E40d5FcD010C8B4695f1b5d88c8a803",
+  "SplitModule#PullSplitFactory": "0x01f0909610Fde09D3a194bF21F3f6efecE2f0EA7",
+  "SplitModule#PushSplitFactory": "0xCf92cf20D258C993B4cea4f6fAD35116Fb7211b3"
 }

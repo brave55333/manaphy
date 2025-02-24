@@ -20,6 +20,18 @@
   yarn contract test
   ```
 
+- **SplitsWarehouseコントラクトのデプロイ**
+
+  ```bash
+  yarn contract deploy:Split --network baseSepolia
+  ```
+
+- **PullSplitFactoryとPushSplitFactoryコントラクトのデプロイ**
+
+  ```bash
+  yarn contract deploy:SplitFactories --network baseSepolia
+  ```
+
 - **フロントエンドのビルド**
 
   ```bash

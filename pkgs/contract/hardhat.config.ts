@@ -20,7 +20,7 @@ const {
 // タスクファイルを読み込むための設定
 const SKIP_LOAD = process.env.SKIP_LOAD === "true";
 if (!SKIP_LOAD) {
-  const taskPaths = ["", "utils"];
+  const taskPaths = ["", "utils", "split"];
   for (const folder of taskPaths) {
     const tasksPath = path.join(__dirname, "tasks", folder);
     const taskFiles = fs
