@@ -27,7 +27,7 @@ task("distribute", "distribute token").setAction(
     // EURC
     const EURC_TOKEN_ADDRESS = "0x808456652fdb597867f38412077A9182bf77359F";
 
-    // address1とaddress2に50%ずつ配分するSplitを作成
+    // address1とaddress2に50%ずつ配分する
     const txHash = await pullSplitContract.write.distribute([
       {
         recipients: [

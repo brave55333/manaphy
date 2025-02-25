@@ -1,7 +1,7 @@
 import { SplitV2Client } from "@0xsplits/splits-sdk";
 import { SplitV2Type } from "@0xsplits/splits-sdk/types";
 import * as dotenv from "dotenv";
-import { PublicClient, WalletClient } from "viem";
+import type { PublicClient, WalletClient } from "viem";
 import { baseSepolia } from "viem/chains";
 
 dotenv.config();

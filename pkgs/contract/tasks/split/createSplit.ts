@@ -1,6 +1,6 @@
 import { task } from "hardhat/config";
 import type { HardhatRuntimeEnvironment } from "hardhat/types";
-import { Address, decodeEventLog } from "viem";
+import { type Address, decodeEventLog } from "viem";
 import { getContractAddress } from "../../helpers/contractJsonIgnitionHelper";
 
 /**
