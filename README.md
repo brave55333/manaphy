@@ -8,6 +8,19 @@
 
 ## How to work
 
+- **セットアップ**
+
+  `pkgs/contract/.env` に 以下の環境変数を設定する。
+
+  ```txt
+  PRIVATE_KEY=""
+  BASESCAN_API_KEY=""
+  ALCHEMY_API_KEY=""
+  GAS_REPORT=true
+  COINMARKETCAP_API_KEY=""
+  SPLITS_API_KEY=
+  ```
+
 - **インストール**
 
   ```bash
