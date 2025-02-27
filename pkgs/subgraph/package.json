@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "codegen": "graph codegen",
-    "build": "graph build",
-    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ subgraph",
-    "create-local": "graph create --node http://localhost:8020/ subgraph",
-    "remove-local": "graph remove --node http://localhost:8020/ subgraph",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 subgraph",
-    "test": "graph test"
+    "codegen": "npx graph codegen",
+    "build": "npx graph build",
+    "deploy": "npx graph deploy --node https://api.studio.thegraph.com/deploy/ subgraph",
+    "create-local": "npx graph create --node http://localhost:8020/ subgraph",
+    "remove-local": "npx graph remove --node http://localhost:8020/ subgraph",
+    "deploy-local": "npx graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 subgraph",
+    "test": "npx graph test"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.96.0",
