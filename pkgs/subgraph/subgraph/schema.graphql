@@ -1,0 +1,43 @@
+type OrderCreated @entity(immutable: true) {
+  id: Bytes!
+  orderId: BigInt! # uint256
+  order_status: Int! # uint8
+  order_destinationX: BigInt! # int256
+  order_destinationY: BigInt! # int256
+  order_productName: String! # string
+  order_productStatus: Int! # uint8
+  order_quantity: BigInt! # uint256
+  order_price: BigInt! # uint256
+  order_shippingFee: BigInt! # uint256
+  order_splitContract: Bytes! # address
+  order_splitParams_recipients: [Bytes!]! # address[]
+  order_splitParams_allocations: [BigInt!]! # uint256[]
+  order_splitParams_totalAllocation: BigInt! # uint256
+  order_splitParams_distributionIncentive: Int! # uint16
+  order_tokenAddress: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OrderStatusChanged @entity(immutable: true) {
+  id: Bytes!
+  orderId: BigInt! # uint256
+  order_status: Int! # uint8
+  order_destinationX: BigInt! # int256
+  order_destinationY: BigInt! # int256
+  order_productName: String! # string
+  order_productStatus: Int! # uint8
+  order_quantity: BigInt! # uint256
+  order_price: BigInt! # uint256
+  order_shippingFee: BigInt! # uint256
+  order_splitContract: Bytes! # address
+  order_splitParams_recipients: [Bytes!]! # address[]
+  order_splitParams_allocations: [BigInt!]! # uint256[]
+  order_splitParams_totalAllocation: BigInt! # uint256
+  order_splitParams_distributionIncentive: Int! # uint16
+  order_tokenAddress: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

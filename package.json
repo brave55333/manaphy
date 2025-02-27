@@ -14,7 +14,8 @@
     "biome:format": "npx biome format --write .",
     "biome:check": "npx biome check --write .",
     "frontend": "yarn workspace frontend",
-    "contract": "yarn workspace contract"
+    "contract": "yarn workspace contract",
+    "subgraph": "yarn workspace subgraph"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",

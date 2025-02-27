@@ -1,0 +1,29 @@
+specVersion: 1.2.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Logistics
+    network: base-sepolia
+    source:
+      address: "0x2dE91FaE42fDb81cC074b664aD0E8dEA3f85e206"
+      abi: Logistics
+      startBlock: 22447961
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.9
+      language: wasm/assemblyscript
+      entities:
+        - OrderCreated
+        - OrderStatusChanged
+      abis:
+        - name: Logistics
+          file: ./abis/Logistics.json
+      eventHandlers:
+        - event: OrderCreated(indexed uint256,(indexed uint8,int256,int256,string,uint8,uint256,uint256,uint256,address,(address[],uint256[],uint256,uint16),address))
+          handler: handleOrderCreated
+        - event: OrderStatusChanged(indexed uint256,(indexed uint8,int256,int256,string,uint8,uint256,uint256,uint256,address,(address[],uint256[],uint256,uint16),address))
+          handler: handleOrderStatusChanged
+      file: ./src/logistics.ts

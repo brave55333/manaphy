@@ -1,0 +1,9 @@
+{
+  "name": "subgraph",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {},
+  "dependencies": {
+    "@graphprotocol/graph-cli": "^0.96.0"
+  }
+}
