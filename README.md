@@ -45,6 +45,12 @@
   yarn contract deploy:SplitFactories --network baseSepolia
   ```
 
+- **Logistics コントラクトをデプロイ**
+
+  ```bash
+  yarn contract deploy:Logistics --network baseSepolia
+  ```
+
 - **Splitコントラクトの作成**
 
   ```bash
@@ -61,6 +67,42 @@
 
   ```bash
   yarn contract distribute --network baseSepolia
+  ```
+
+- **オーダーを作成する**
+
+  ```bash
+  yarn contract createOrder --network baseSepolia
+  ``` 
+
+- **オーダーと紐づいたSplitコントラクトに入金する**
+
+  ```bash
+  yarn contract deposit --id 0 --amount 0.1 --network baseSepolia
+  ```
+
+- **注文IDを指定して作成済みのオーダーを全て取得する**
+
+  ```bash
+  yarn contract getOrder --id 0 --network baseSepolia
+  ```
+
+- **作成済みのオーダーを全て取得する**
+
+  ```bash
+  yarn contract getAllOrders --network baseSepolia
+  ```
+
+- **オーダーの状態を配達済みにして支払いを実行する**
+
+  ```bash
+  yarn contract updateOrderStatus --id 0 --network baseSepolia
+  ```
+
+- **支払いされたお金を受け取る**
+
+  ```bash
+  yarn contract withdraw --token 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE --network baseSepolia
   ```
 
 - **フロントエンドのビルド**

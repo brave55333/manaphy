@@ -4,9 +4,9 @@ import "@nomicfoundation/hardhat-viem";
 import "@openzeppelin/hardhat-upgrades";
 import * as dotenv from "dotenv";
 import "hardhat-gas-reporter";
+import type { HardhatUserConfig } from "hardhat/config";
 import fs from "node:fs";
 import path from "node:path";
-import type { HardhatUserConfig } from "hardhat/config";
 
 dotenv.config();
 
@@ -20,7 +20,7 @@ const {
 // タスクファイルを読み込むための設定
 const SKIP_LOAD = process.env.SKIP_LOAD === "true";
 if (!SKIP_LOAD) {
-  const taskPaths = ["", "utils", "split"];
+  const taskPaths = ["", "utils", "split", "logistics"];
   for (const folder of taskPaths) {
     const tasksPath = path.join(__dirname, "tasks", folder);
     const taskFiles = fs
@@ -59,6 +59,16 @@ const config: HardhatUserConfig = {
     apiKey: {
       baseSepolia: BASESCAN_API_KEY ?? "",
     },
+    customChains: [
+      {
+        network: "baseSepolia",
+        chainId: 84532,
+        urls: {
+          apiURL: "https://api-sepolia.basescan.org/api",
+          browserURL: "https://sepolia.basescan.org",
+        },
+      },
+    ],
   },
   gasReporter: {
     enabled: true,
@@ -67,6 +77,9 @@ const config: HardhatUserConfig = {
     coinmarketcap: COINMARKETCAP_API_KEY,
     gasPriceApi:
       "https://api.etherscan.io/api?module=proxy&action=eth_gasPrice",
+  },
+  sourcify: {
+    enabled: true,
   },
 };
 
