@@ -116,3 +116,13 @@
   ```bash
   yarn frontend dev
   ```
+
+- **subgraphのCodeGen & CodeBuild**
+
+  ```bash
+  yarn subgraph codegen
+  ```
+
+  ```bash
+  yarn subgraph build 
+  ```

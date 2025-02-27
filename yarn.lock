@@ -981,7 +981,7 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.9.tgz#50dea3616bc8191fb8e112283b49eaff03e78429"
   integrity sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==
 
-"@graphprotocol/graph-cli@^0.96.0":
+"@graphprotocol/graph-cli@0.96.0":
   version "0.96.0"
   resolved "https://registry.yarnpkg.com/@graphprotocol/graph-cli/-/graph-cli-0.96.0.tgz#faa21526ad89ef60b4914acf9f8b774e214490cc"
   integrity sha512-zjVMtzoipxj5tBEAXFBVAIHT6kkxMYauXHX00/IoTu3pE26hdt4ogV1vbfBai/TnPkQCDR86vJiN0XqPfc+7sw==
@@ -1012,6 +1012,13 @@
     undici "7.3.0"
     web3-eth-abi "4.4.1"
     yaml "2.7.0"
+
+"@graphprotocol/graph-ts@0.37.0":
+  version "0.37.0"
+  resolved "https://registry.yarnpkg.com/@graphprotocol/graph-ts/-/graph-ts-0.37.0.tgz#ad5e9bc24a099db336e6488e37d5bd5283501a39"
+  integrity sha512-3xp/sO8zFDBkX44ydGB87ow5Cyrfr/SAm/cWzIRzUVL7ROw0KUyFBG1xj4KKlMnAod7/RL99zChYquC15H4Oqg==
+  dependencies:
+    assemblyscript "0.27.31"
 
 "@hookform/resolvers@^3.9.1":
   version "3.10.0"
@@ -3618,6 +3625,14 @@ assemblyscript@0.19.23:
     long "^5.2.0"
     source-map-support "^0.5.20"
 
+assemblyscript@0.27.31:
+  version "0.27.31"
+  resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.27.31.tgz#07412b1bc42c67f78080dbaddca030ab74d3b9b2"
+  integrity sha512-Ra8kiGhgJQGZcBxjtMcyVRxOEJZX64kd+XGpjWzjcjgxWJVv+CAQO0aDBk4GQVhjYbOkATarC83mHjAVGtwPBQ==
+  dependencies:
+    binaryen "116.0.0-nightly.20240114"
+    long "^5.2.1"
+
 assertion-error@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/assertion-error/-/assertion-error-1.1.0.tgz#e60b6b0e8f301bd97e5375215bda406c85118c0b"
@@ -3726,6 +3741,11 @@ binaryen@102.0.0-nightly.20211028:
   version "102.0.0-nightly.20211028"
   resolved "https://registry.yarnpkg.com/binaryen/-/binaryen-102.0.0-nightly.20211028.tgz#8f1efb0920afd34509e342e37f84313ec936afb2"
   integrity sha512-GCJBVB5exbxzzvyt8MGDv/MeUjs6gkXDvf4xOIItRBptYl0Tz5sm1o/uG95YK0L0VeG5ajDu3hRtkBP2kzqC5w==
+
+binaryen@116.0.0-nightly.20240114:
+  version "116.0.0-nightly.20240114"
+  resolved "https://registry.yarnpkg.com/binaryen/-/binaryen-116.0.0-nightly.20240114.tgz#ad8bfbde77d4cb4715b93997114eefc30f45155b"
+  integrity sha512-0GZrojJnuhoe+hiwji7QFaL3tBlJoA+KFUN7ouYSDGZLSo9CKM8swQX8n/UcbR0d1VuZKU+nhogNzv423JEu5A==
 
 blakejs@^1.1.0:
   version "1.2.1"
@@ -6530,7 +6550,7 @@ log-symbols@^4.1.0:
     chalk "^4.1.0"
     is-unicode-supported "^0.1.0"
 
-long@^5.2.0:
+long@^5.2.0, long@^5.2.1:
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/long/-/long-5.3.1.tgz#9d4222d3213f38a5ec809674834e0f0ab21abe96"
   integrity sha512-ka87Jz3gcx/I7Hal94xaN2tZEOPoUOEVftkQqZx2EeQRN7LGdfLlI3FvZ+7WDplm+vK2Urx9ULrvSowtdCieng==
@@ -6590,6 +6610,13 @@ markdown-table@^1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/markdown-table/-/markdown-table-1.1.3.tgz#9fcb69bcfdb8717bfd0398c6ec2d93036ef8de60"
   integrity sha512-1RUZVgQlpJSPWYbFSpmudq5nHY1doEIv89gBtF0s4gW1GF2XorxcA/70M5vq7rLv0a6mhOUccRsqkwhwLCIQ2Q==
+
+matchstick-as@0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/matchstick-as/-/matchstick-as-0.6.0.tgz#c65296b1f51b1014d605c52067d9b5321ea630e8"
+  integrity sha512-E36fWsC1AbCkBFt05VsDDRoFvGSdcZg6oZJrtIe/YDBbuFh8SKbR5FcoqDhNWqSN+F7bN/iS2u8Md0SM+4pUpw==
+  dependencies:
+    wabt "1.0.24"
 
 math-intrinsics@^1.1.0:
   version "1.1.0"
@@ -8718,6 +8745,11 @@ viem@^2.20.1:
     isows "1.0.6"
     ox "0.6.7"
     ws "8.18.0"
+
+wabt@1.0.24:
+  version "1.0.24"
+  resolved "https://registry.yarnpkg.com/wabt/-/wabt-1.0.24.tgz#c02e0b5b4503b94feaf4a30a426ef01c1bea7c6c"
+  integrity sha512-8l7sIOd3i5GWfTWciPL0+ff/FK/deVK2Q6FN+MPz4vfUcD78i2M/49XJTwF6aml91uIiuXJEsLKWMB2cw/mtKg==
 
 wcwidth@^1.0.1:
   version "1.0.1"
