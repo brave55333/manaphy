@@ -1,9 +1,9 @@
+import { Bytes } from "@graphprotocol/graph-ts";
 import {
   OrderCreated as OrderCreatedEvent,
   OrderStatusChanged as OrderStatusChangedEvent,
 } from "../generated/Logistics/Logistics";
 import { OrderCreated, OrderStatusChanged } from "../generated/schema";
-import { Bytes } from "@graphprotocol/graph-ts";
 
 export function handleOrderCreated(event: OrderCreatedEvent): void {
   let entity = new OrderCreated(
