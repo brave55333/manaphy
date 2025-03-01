@@ -175,7 +175,7 @@
       status
     }
     orderStatusChangeds(
-      orderBy: orderId
+      orderBy: blockTimestamp
       orderDirection: desc
       first: 1
       where: {orderId: "0"}
