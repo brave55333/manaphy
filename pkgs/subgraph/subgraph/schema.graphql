@@ -1,0 +1,43 @@
+type OrderCreated @entity(immutable: true) {
+  id: Bytes!
+  orderId: BigInt! # uint256
+  status: Int! # uint8
+  destinationX: BigInt! # int256
+  destinationY: BigInt! # int256
+  productName: String! # string
+  productStatus: Int! # uint8
+  quantity: BigInt! # uint256
+  price: BigInt! # uint256
+  shippingFee: BigInt! # uint256
+  splitContract: Bytes! # address
+  recipients: [Bytes!]! # address[]
+  allocations: [BigInt!]! # uint256[]
+  totalAllocation: BigInt! # uint256
+  distributionIncentive: Int! # uint16
+  tokenAddress: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OrderStatusChanged @entity(immutable: true) {
+  id: Bytes!
+  orderId: BigInt! # uint256
+  status: Int! # uint8
+  destinationX: BigInt! # int256
+  destinationY: BigInt! # int256
+  productName: String! # string
+  productStatus: Int! # uint8
+  quantity: BigInt! # uint256
+  price: BigInt! # uint256
+  shippingFee: BigInt! # uint256
+  splitContract: Bytes! # address
+  recipients: [Bytes!]! # address[]
+  allocations: [BigInt!]! # uint256[]
+  totalAllocation: BigInt! # uint256
+  distributionIncentive: Int! # uint16
+  tokenAddress: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

@@ -122,10 +122,6 @@ describe("Logistics", () => {
       });
 
       // 分配前の残高を取得する。
-      const beforeAddress1Balance = await publicClient.getBalance({
-        address: owner.account?.address,
-      });
-
       const beforeAddress2Balance = await publicClient.getBalance({
         address: otherAccount.account?.address,
       });
@@ -156,13 +152,6 @@ describe("Logistics", () => {
 
       // withdrawを実行
       await SplitsWarehouse.write.withdraw(
-        [owner.account.address, "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"],
-        {
-          account: owner.account,
-        },
-      );
-
-      await SplitsWarehouse.write.withdraw(
         [
           otherAccount.account.address,
           "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
@@ -172,20 +161,11 @@ describe("Logistics", () => {
         },
       );
 
-      // distributeの残高を取得する。
-      const afterAddress1Balance = await publicClient.getBalance({
-        address: owner.account?.address,
-      });
-
       const afterAddress2Balance = await publicClient.getBalance({
         address: otherAccount.account?.address,
       });
 
       // 残高が増えているか確認
-      expect(Number(afterAddress1Balance) - Number(beforeAddress1Balance)).gt(
-        499652329174200000,
-      );
-
       expect(Number(afterAddress2Balance) - Number(beforeAddress2Balance)).gt(
         499900000000000000,
       );

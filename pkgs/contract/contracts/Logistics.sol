@@ -32,8 +32,40 @@ contract Logistics {
   uint256 public nextOrderId;
   
   // 各種イベント
-  event OrderCreated(uint256 indexed orderId, Order indexed order);
-  event OrderStatusChanged(uint256 indexed orderId, Order indexed order);
+  event OrderCreated(
+    uint256 indexed orderId, 
+    OrderStatus status,
+    int256 destinationX,
+    int256 destinationY,
+    string productName,
+    ProductStatus productStatus,
+    uint256 quantity,
+    uint256 price,
+    uint256 shippingFee,
+    address splitContract,
+    address[] recipients,
+    uint256[] allocations,
+    uint256 totalAllocation,
+    uint16 distributionIncentive,
+    address tokenAddress
+  );
+  event OrderStatusChanged(
+    uint256 indexed orderId, 
+    OrderStatus status,
+    int256 destinationX,
+    int256 destinationY,
+    string productName,
+    ProductStatus productStatus,
+    uint256 quantity,
+    uint256 price,
+    uint256 shippingFee,
+    address splitContract,
+    address[] recipients,
+    uint256[] allocations,
+    uint256 totalAllocation,
+    uint16 distributionIncentive,
+    address tokenAddress
+  );
 
   /**
    * コンストラクター
@@ -68,7 +100,7 @@ contract Logistics {
     );
 
     // オーダーを作成
-    orders[orderId] = Order(
+    Order memory newOrder = Order(
       OrderStatus.Created,
       _destinationX,
       _destinationY,
@@ -81,8 +113,27 @@ contract Logistics {
       _splitParams,
       _tokenAddress
     );
+
+    orders[orderId] = newOrder;
+
     // イベント発行
-    emit OrderCreated(orderId, orders[orderId]);
+    emit OrderCreated(
+      orderId, 
+      newOrder.status,
+      newOrder.destinationX,
+      newOrder.destinationY,
+      newOrder.productName,
+      newOrder.productStatus,
+      newOrder.quantity,
+      newOrder.price,
+      newOrder.shippingFee,
+      newOrder.splitContract,
+      newOrder.splitParams.recipients,
+      newOrder.splitParams.allocations,
+      newOrder.splitParams.totalAllocation,
+      newOrder.splitParams.distributionIncentive,
+      newOrder.tokenAddress
+    );
   }
   
   /**
@@ -106,7 +157,23 @@ contract Logistics {
       );
     }
 
-    emit OrderStatusChanged(_orderId, orders[_orderId]);
+    emit OrderStatusChanged(
+      _orderId,
+      orders[_orderId].status,
+      orders[_orderId].destinationX,
+      orders[_orderId].destinationY,
+      orders[_orderId].productName,
+      orders[_orderId].productStatus,
+      orders[_orderId].quantity,
+      orders[_orderId].price,
+      orders[_orderId].shippingFee,
+      orders[_orderId].splitContract,
+      orders[_orderId].splitParams.recipients,
+      orders[_orderId].splitParams.allocations,
+      orders[_orderId].splitParams.totalAllocation,
+      orders[_orderId].splitParams.distributionIncentive,
+      orders[_orderId].tokenAddress
+    );
   }
   
   /**

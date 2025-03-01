@@ -1,7 +1,6 @@
 {
-  "LockModule#Lock": "0x18c8513d184a327c7F5A25cC18a5A33f4d6dbd33",
-  "SplitModule#SplitsWarehouse": "0x47E996488E40d5FcD010C8B4695f1b5d88c8a803",
-  "SplitModule#PullSplitFactory": "0x01f0909610Fde09D3a194bF21F3f6efecE2f0EA7",
-  "SplitModule#PushSplitFactory": "0xCf92cf20D258C993B4cea4f6fAD35116Fb7211b3",
-  "LogisticsModule#Logistics": "0x2dE91FaE42fDb81cC074b664aD0E8dEA3f85e206"
+  "SplitModule#SplitsWarehouse": "0x1079EE1271C80E224A42a2f9bfD2cFD6BfFF10A4",
+  "SplitModule#PullSplitFactory": "0xA99e56B62e2296Ff2530a52aDc828290442AEfae",
+  "SplitModule#PushSplitFactory": "0xCa83040d979084102951a765E8910043146E82cA",
+  "LogisticsModule#Logistics": "0x00352b04d406Bc3E867e4d9752CfCc46A7633C8D"
 }
