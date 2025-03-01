@@ -126,3 +126,62 @@
   ```bash
   yarn subgraph build 
   ```
+
+## デプロイしたサブグラフ
+
+[https://api.studio.thegraph.com/query/44992/subgraph/"v0.0.1"](https://api.studio.thegraph.com/query/44992/subgraph/"v0.0.1")
+
+- 全ての注文情報を取得するクエリ
+
+  ```gql
+  query GetAllOrders {
+    orderCreateds(orderBy: orderId, orderDirection: desc) {
+      orderId
+      price
+      productName
+      productStatus
+      quantity
+      recipients
+      shippingFee
+      splitContract
+      status
+      tokenAddress
+      totalAllocation
+      transactionHash
+    }
+  }
+  ```
+
+- 注文IDを指定して注文情報を取得するクエリ
+
+  ```gql
+  query MyQuery {
+    orderCreateds(
+      orderBy: orderId, 
+      orderDirection: desc, 
+      where: {orderId: "0"}
+    ) {
+      orderId
+      price
+      productName
+      productStatus
+      quantity
+      recipients
+      shippingFee
+      splitContract
+      tokenAddress
+      totalAllocation
+      transactionHash
+      status
+    }
+    orderStatusChangeds(
+      orderBy: orderId
+      orderDirection: desc
+      first: 1
+      where: {orderId: "0"}
+    ) {
+      orderId
+      status
+    }
+  }
+  ```
