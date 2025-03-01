@@ -1,8 +1,0 @@
-{
-  "base-sepolia": {
-    "Logistics": {
-      "address": "0x2dE91FaE42fDb81cC074b664aD0E8dEA3f85e206",
-      "startBlock": 22447961
-    }
-  }
-}
