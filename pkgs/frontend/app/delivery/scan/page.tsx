@@ -1,12 +1,12 @@
 "use client";
 
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { useRef, useState, useEffect, useCallback } from "react";
+import Webcam from "react-webcam";
+import { BrowserQRCodeReader } from "@zxing/library";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BrowserQRCodeReader } from "@zxing/library";
-import { Camera, FlipHorizontal, Loader2, XCircle } from "lucide-react";
-import { useCallback, useEffect, useRef, useState } from "react";
-import Webcam from "react-webcam";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Loader2, Camera, XCircle, FlipHorizontal } from "lucide-react";
 
 export default function ScanQRCode() {
   const webcamRef = useRef<Webcam | null>(null);

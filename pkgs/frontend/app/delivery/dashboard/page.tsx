@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   Table,
@@ -7,13 +8,17 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import Link from "next/link";
 
 export default function DeliveryDashboard() {
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">配送業者ダッシュボード</h1>
-      <Table className="mb-8">
+      <header className="flex justify-between items-center mb-8">
+        <h1 className="text-3xl font-bold">配送業者ダッシュボード</h1>
+        <Button asChild>
+          <Link href="/delivery/scan">QRコードをスキャン</Link>
+        </Button>
+      </header>
+      <Table>
         <TableHeader>
           <TableRow>
             <TableHead>注文ID</TableHead>
@@ -45,11 +50,6 @@ export default function DeliveryDashboard() {
           </TableRow>
         </TableBody>
       </Table>
-      <div className="flex justify-center">
-        <Button asChild>
-          <Link href="/delivery/scan">QRコードをスキャン</Link>
-        </Button>
-      </div>
     </div>
   );
 }
