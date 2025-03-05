@@ -2,6 +2,7 @@
 
 import type React from "react";
 
+<<<<<<< HEAD
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -10,6 +11,16 @@ import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Loader2, MapPin, AlertTriangle, Info } from "lucide-react";
 import dynamic from "next/dynamic";
+=======
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { AlertTriangle, Info, Loader2, MapPin } from "lucide-react";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+>>>>>>> b6e7d1d (leafletを追加し、注文完了ページと地図コンポーネントを実装)
 
 // Leafletマップをクライアントサイドのみでロード
 const LocationMap = dynamic(() => import("./location-map"), {

@@ -1,8 +1,7 @@
 "use client";
-
-import { useEffect, useRef } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import { useEffect, useRef } from "react";
 
 interface DeliveryMapProps {
   pickupCoordinates: [number, number];
@@ -19,6 +18,7 @@ export default function DeliveryMap({
 
   useEffect(() => {
     // Leafletのデフォルトアイコンパスの問題を修正
+    delete L.Icon.Default.prototype._getIconUrl;
     L.Icon.Default.mergeOptions({
       iconRetinaUrl:
         "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png",
