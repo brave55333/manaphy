@@ -1,15 +1,8 @@
 "use client";
 
-<<<<<<< HEAD
-import { useEffect, useRef } from "react";
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
-import type { Map, Marker, Circle } from "leaflet";
-=======
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { useEffect, useRef } from "react";
->>>>>>> b6e7d1d (leafletを追加し、注文完了ページと地図コンポーネントを実装)
 
 interface LocationMapProps {
   latitude: number;
@@ -23,10 +16,8 @@ export default function LocationMap({ latitude, longitude }: LocationMapProps) {
 
   useEffect(() => {
     // Leafletのデフォルトアイコンパスの問題を修正
-<<<<<<< HEAD
-=======
     delete L.Icon.Default.prototype._getIconUrl;
->>>>>>> b6e7d1d (leafletを追加し、注文完了ページと地図コンポーネントを実装)
+
     L.Icon.Default.mergeOptions({
       iconRetinaUrl:
         "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png",

@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-import Link from "next/link";
-import { CheckCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-=======
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
 import Link from "next/link";
->>>>>>> b6e7d1d (leafletを追加し、注文完了ページと地図コンポーネントを実装)
 
 export default function OrderComplete({
   searchParams,
