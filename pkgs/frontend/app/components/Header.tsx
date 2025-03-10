@@ -1,9 +1,10 @@
-import { Name } from "@coinbase/onchainkit/identity";
+import { Avatar, Name } from "@coinbase/onchainkit/identity";
 import {
   ConnectWallet,
   Wallet,
   WalletDropdown,
   WalletDropdownDisconnect,
+  WalletDropdownFundLink,
   WalletDropdownLink,
 } from "@coinbase/onchainkit/wallet";
 import Link from "next/link";
@@ -23,6 +24,7 @@ export function Header() {
           <div className="space-x-4">
             <Wallet>
               <ConnectWallet className="bg-blue-800">
+                <Avatar />
                 <Name />
               </ConnectWallet>
               <WalletDropdown className="bg-blue-800">
@@ -44,6 +46,7 @@ export function Header() {
                 >
                   配送業者ダッシュボード
                 </WalletDropdownLink>
+                <WalletDropdownFundLink />
                 <WalletDropdownDisconnect className="hover:bg-blue-200" />
               </WalletDropdown>
             </Wallet>
