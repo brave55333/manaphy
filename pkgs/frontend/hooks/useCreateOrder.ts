@@ -1,4 +1,4 @@
-import { useWriteContract } from "wagmi";
+import { useWriteContract, useWaitForTransactionReceipt } from "wagmi";
 import { addresses } from "../config/address";
 import abi from "../lib/abi.json";
 
@@ -27,7 +27,7 @@ const ETH_ADDRESS = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE" as const;
  *
  * @example
  * // 基本的な使用方法
- * const { createOrder, isPending } = useCreateOrder();
+ * const { createOrder, isPending, isSuccess, isError, error, hash, isConfirming, isConfirmed, receipt } = useCreateOrder();
  * const { address } = useAccount();
  *
  * // 注文作成の実行
@@ -44,10 +44,34 @@ const ETH_ADDRESS = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE" as const;
  *   allocations: [BigInt(50), BigInt(50)]
  * });
  *
+ * // トランザクションの状態を確認
+ * if (isPending) {
+ *   console.log("トランザクション送信中...");
+ * } else if (isConfirming) {
+ *   console.log("トランザクション確認中...");
+ * } else if (isConfirmed) {
+ *   console.log("トランザクション完了！", receipt);
+ * }
+ *
  * @returns {Object} createOrder関数と関連するステート
  */
 export function useCreateOrder() {
-  const { writeContract, ...rest } = useWriteContract();
+  const {
+    writeContract,
+    isPending,
+    isSuccess,
+    isError,
+    error,
+    data: hash,
+  } = useWriteContract();
+
+  const {
+    isLoading: isConfirming,
+    isSuccess: isConfirmed,
+    data: receipt,
+  } = useWaitForTransactionReceipt({
+    hash,
+  });
 
   const createOrder = (params: CreateOrderParams) => {
     const {
@@ -93,6 +117,13 @@ export function useCreateOrder() {
 
   return {
     createOrder,
-    ...rest,
+    isPending,
+    isSuccess,
+    isError,
+    error,
+    hash,
+    isConfirming,
+    isConfirmed,
+    receipt,
   };
 }

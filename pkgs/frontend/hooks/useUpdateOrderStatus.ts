@@ -1,4 +1,4 @@
-import { useWriteContract } from "wagmi";
+import { useWriteContract, useWaitForTransactionReceipt } from "wagmi";
 import abi from "../lib/abi.json";
 import { addresses } from "../config/address";
 
@@ -13,13 +13,22 @@ export type UpdateOrderStatusParams = {
  *
  * @example
  * // 基本的な使用方法
- * const { updateOrderStatus, isPending } = useUpdateOrderStatus();
+ * const { updateOrderStatus, isPending, isSuccess, isError, error, hash, isConfirming, isConfirmed, receipt } = useUpdateOrderStatus();
  *
  * // ステータス更新の実行
  * updateOrderStatus({
  *   orderId: 1,
  *   newStatus: 3 // 3 = Delivered
  * });
+ *
+ * // トランザクションの状態を確認
+ * if (isPending) {
+ *   console.log("トランザクション送信中...");
+ * } else if (isConfirming) {
+ *   console.log("トランザクション確認中...");
+ * } else if (isConfirmed) {
+ *   console.log("トランザクション完了！", receipt);
+ * }
  *
  * @example
  * // ステータス定数を使用する場合
@@ -38,7 +47,22 @@ export type UpdateOrderStatusParams = {
  * @returns {Object} updateOrderStatus関数と関連するステート
  */
 export function useUpdateOrderStatus() {
-  const { writeContract, writeContractAsync, ...rest } = useWriteContract();
+  const {
+    writeContract,
+    isPending,
+    isSuccess,
+    isError,
+    error,
+    data: hash,
+  } = useWriteContract();
+
+  const {
+    isLoading: isConfirming,
+    isSuccess: isConfirmed,
+    data: receipt,
+  } = useWaitForTransactionReceipt({
+    hash,
+  });
 
   // 注文ステータスの更新
   const updateOrderStatus = (params: UpdateOrderStatusParams) => {
@@ -54,6 +78,13 @@ export function useUpdateOrderStatus() {
 
   return {
     updateOrderStatus,
-    ...rest,
+    isPending,
+    isSuccess,
+    isError,
+    error,
+    hash,
+    isConfirming,
+    isConfirmed,
+    receipt,
   };
 }
