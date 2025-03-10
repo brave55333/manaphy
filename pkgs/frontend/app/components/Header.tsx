@@ -26,6 +26,9 @@ export function Header() {
                 <Name />
               </ConnectWallet>
               <WalletDropdown className="bg-blue-800">
+                <WalletDropdownLink href="/" className="hover:bg-blue-200">
+                  ホーム
+                </WalletDropdownLink>
                 <WalletDropdownLink
                   href="/farmer/dashboard"
                   className="hover:bg-blue-200"

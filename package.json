@@ -7,7 +7,7 @@
   "author": "",
   "license": "MIT",
   "engines": {
-    "node": ">=20"
+    "node": ">=23"
   },
   "workspaces": ["pkgs/*"],
   "scripts": {
