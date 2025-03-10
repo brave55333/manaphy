@@ -1,3 +1,4 @@
+import "@coinbase/onchainkit/styles.css";
 import { OnChainProviders } from "@/context/OnChainKitProvider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
