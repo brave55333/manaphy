@@ -1,4 +1,11 @@
-import { Button } from "@/components/ui/button";
+import { Name } from "@coinbase/onchainkit/identity";
+import {
+  ConnectWallet,
+  Wallet,
+  WalletDropdown,
+  WalletDropdownDisconnect,
+  WalletDropdownLink,
+} from "@coinbase/onchainkit/wallet";
 import Link from "next/link";
 
 /**
@@ -14,18 +21,32 @@ export function Header() {
             ブロックチェーン物流
           </Link>
           <div className="space-x-4">
-            <Button asChild>
-              <Link href="/">Home</Link>
-            </Button>
-            <Button asChild>
-              <Link href="/farmer/dashboard">農家ダッシュボード</Link>
-            </Button>
-            <Button asChild>
-              <Link href="/buyer/dashboard">購入者ダッシュボード</Link>
-            </Button>
-            <Button asChild>
-              <Link href="/delivery/dashboard">配送業者ダッシュボード</Link>
-            </Button>
+            <Wallet>
+              <ConnectWallet className="bg-blue-800">
+                <Name />
+              </ConnectWallet>
+              <WalletDropdown className="bg-blue-800">
+                <WalletDropdownLink
+                  href="/farmer/dashboard"
+                  className="hover:bg-blue-200"
+                >
+                  農家ダッシュボード
+                </WalletDropdownLink>
+                <WalletDropdownLink
+                  href="/buyer/dashboard"
+                  className="hover:bg-blue-200"
+                >
+                  購入者ダッシュボード
+                </WalletDropdownLink>
+                <WalletDropdownLink
+                  href="/delivery/dashboard"
+                  className="hover:bg-blue-200"
+                >
+                  配送業者ダッシュボード
+                </WalletDropdownLink>
+                <WalletDropdownDisconnect className="hover:bg-blue-200" />
+              </WalletDropdown>
+            </Wallet>
           </div>
         </nav>
       </div>

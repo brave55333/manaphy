@@ -1,3 +1,4 @@
+import { OnChainProviders } from "@/context/OnChainKitProvider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import type React from "react";
@@ -24,8 +25,10 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={inter.className}>
-        <Header />
-        <main className="container mx-auto px-4 py-8">{children}</main>
+        <OnChainProviders>
+          <Header />
+          <main className="container mx-auto px-4 py-8">{children}</main>
+        </OnChainProviders>
       </body>
     </html>
   );
