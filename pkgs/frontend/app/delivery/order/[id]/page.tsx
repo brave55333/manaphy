@@ -11,6 +11,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { getOrderQuery } from "@/graphql";
+import { OrderStatusMap } from "@/lib/types";
 import {
   AlertCircle,
   CheckCircle2,
@@ -23,6 +25,7 @@ import {
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useState } from "react";
+import { useQuery } from "urql";
 
 // Leafletマップをクライアントサイドのみでロード
 const DeliveryMap = dynamic(() => import("./delivery-map"), {
@@ -106,6 +109,9 @@ const getMockDeliveryInfo = (id: string): DeliveryInfo => {
   };
 };
 
+/**
+ * DeliveryOrderDetails Component
+ */
 export default function DeliveryOrderDetails({
   params,
 }: { params: { id: string } }) {
@@ -113,6 +119,29 @@ export default function DeliveryOrderDetails({
     getMockDeliveryInfo(params.id),
   );
   const [isUpdating, setIsUpdating] = useState(false);
+
+  //get All Orders info
+  const [result] = useQuery({
+    query: getOrderQuery,
+    variables: { orderId: Number(params.id) },
+  });
+  const { data: order } = result;
+
+  //@ts-ignore
+  let latestStatus: string = "-1";
+
+  if (order !== undefined) {
+    const updatedStatus = order.orderStatusChangeds;
+    if (updatedStatus !== undefined) {
+      console.log(updatedStatus);
+      if (updatedStatus.length > 0) {
+        latestStatus = updatedStatus[0].status;
+      }
+    }
+  }
+
+  const statusLabel =
+    OrderStatusMap[Number(latestStatus)] || "不明なステータス";
 
   // 配送完了処理
   const handleCompleteDelivery = async () => {
@@ -136,6 +165,8 @@ export default function DeliveryOrderDetails({
         },
       ],
     }));
+
+    // ここに呼び出しのメソッドを加える。
 
     setIsUpdating(false);
   };

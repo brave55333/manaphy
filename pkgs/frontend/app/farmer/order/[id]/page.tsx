@@ -7,6 +7,9 @@ import { OrderStatusMap } from "@/lib/types";
 import Image from "next/image";
 import { useQuery } from "urql";
 
+/**
+ * OrderDetails Component
+ */
 export default function OrderDetails({ params }: { params: { id: string } }) {
   //get All Orders info
   const [result] = useQuery({
