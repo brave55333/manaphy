@@ -6,10 +6,12 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useCreateOrder } from "@/hooks/useCreateOrder";
 import { AlertTriangle, Info, Loader2, MapPin } from "lucide-react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useAccount } from "wagmi";
 
 // Leafletマップをクライアントサイドのみでロード
 const LocationMap = dynamic(() => import("./location-map"), {
@@ -50,6 +52,10 @@ export default function CreateOrder() {
       address: "",
     },
   });
+
+  const { address } = useAccount();
+
+  const { createOrder } = useCreateOrder();
 
   // 位置情報取得関数を改善
   const handleGetLocation = () => {
@@ -198,11 +204,21 @@ export default function CreateOrder() {
       }
 
       // ここで注文データを保存するAPIを呼び出す
-      // 実際のアプリケーションではサーバーアクションやAPIエンドポイントを使用
-      const response = await new Promise((resolve) => {
-        setTimeout(() => {
-          resolve({ ok: true, orderId: "123" });
-        }, 1000);
+      createOrder({
+        destinationX: BigInt(10),
+        destinationY: BigInt(20),
+        productName: "商品名",
+        quantity: BigInt(5),
+        price: BigInt(100),
+        shippingFee: BigInt(10),
+        recipients: [
+          "0x51908F598A5e0d8F1A3bAbFa6DF76F9704daD072",
+          "0x1295BDc0C102EB105dC0198fdC193588fe66A1e4",
+        ],
+        allocations: [BigInt(50), BigInt(50)],
+        owner: address as `0x${string}`,
+        creator: address as `0x${string}`,
+        tokenAddress: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
       });
 
       // 完了ページへリダイレクト

@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getOrderQuery } from "@/graphql";
+import { useUpdateOrderStatus } from "@/hooks/useUpdateOrderStatus";
 import { OrderStatusMap } from "@/lib/types";
 import {
   AlertCircle,
@@ -120,6 +121,8 @@ export default function DeliveryOrderDetails({
   );
   const [isUpdating, setIsUpdating] = useState(false);
 
+  const { updateOrderStatus } = useUpdateOrderStatus();
+
   //get All Orders info
   const [result] = useQuery({
     query: getOrderQuery,
@@ -147,8 +150,11 @@ export default function DeliveryOrderDetails({
   const handleCompleteDelivery = async () => {
     setIsUpdating(true);
 
-    // 実際のアプリケーションではAPIを呼び出す
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // 配送ステータスを配達済に変更する(distributionされる)。
+    updateOrderStatus({
+      orderId: Number(params.id),
+      newStatus: 3,
+    });
 
     // 状態を更新
     setDeliveryInfo((prev) => ({
