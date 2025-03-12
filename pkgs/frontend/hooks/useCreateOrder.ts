@@ -1,4 +1,4 @@
-import { useWriteContract, useWaitForTransactionReceipt } from "wagmi";
+import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { addresses } from "../config/address";
 import abi from "../lib/abi.json";
 
@@ -87,7 +87,8 @@ export function useCreateOrder() {
       allocations,
       totalAllocation = BigInt(100),
       distributionIncentive = 0,
-      tokenAddress = ETH_ADDRESS,
+      tokenAddress,
+      // tokenAddress = ETH_ADDRESS,
     } = params;
 
     return writeContract({
