@@ -11,6 +11,7 @@ import { useQuery } from "urql";
  * OrderDetails Component
  */
 export default function OrderDetails({ params }: { params: { id: string } }) {
+  console.log("params", params.id);
   //get All Orders info
   const [result] = useQuery({
     query: getOrderQuery,
