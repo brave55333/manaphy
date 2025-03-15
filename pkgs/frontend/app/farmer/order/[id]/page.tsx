@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getOrderQuery } from "@/graphql";
 import { OrderStatusMap } from "@/lib/types";
-import Image from "next/image";
+import { Download } from "lucide-react";
+import { QRCodeSVG } from "qrcode.react";
 import { useQuery } from "urql";
 
 /**
@@ -35,6 +36,50 @@ export default function OrderDetails({ params }: { params: { id: string } }) {
   const statusLabel =
     OrderStatusMap[Number(latestStatus)] || "不明なステータス";
 
+  // QRコードに含めるデータ
+  let qrCodeData = JSON.stringify({
+    orderId: params.id,
+    product: "不明な商品",
+    quantity: 0,
+    timestamp: new Date().toISOString(),
+  });
+
+  if (order !== undefined) {
+    qrCodeData = JSON.stringify({
+      orderId: params.id,
+      product: order.orderCreateds[0].productName || "不明な商品",
+      quantity: order.orderCreateds[0].quantity || 0,
+      timestamp: new Date().toISOString(),
+    });
+  }
+
+  // QRコードをダウンロードする関数
+  const handleDownloadQR = () => {
+    const svg = document.getElementById("order-qrcode");
+    if (!svg) return;
+
+    // SVGをデータURLに変換
+    const svgData = new XMLSerializer().serializeToString(svg);
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    const img = new Image();
+
+    img.onload = () => {
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx?.drawImage(img, 0, 0);
+      const pngFile = canvas.toDataURL("image/png");
+
+      // ダウンロードリンクを作成
+      const downloadLink = document.createElement("a");
+      downloadLink.download = `order-${params.id}-qrcode.png`;
+      downloadLink.href = pngFile;
+      downloadLink.click();
+    };
+
+    img.src = `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(svgData)))}`;
+  };
+
   return (
     <>
       {order !== undefined && (
@@ -63,13 +108,22 @@ export default function OrderDetails({ params }: { params: { id: string } }) {
               </p>
               <div>
                 <h3 className="font-semibold mb-2">QRコード</h3>
-                <Image
-                  src="/placeholder.svg"
-                  alt="QRコード"
-                  width={200}
-                  height={200}
-                />
-                <Button className="mt-2">QRコードをダウンロード</Button>
+                <div className="bg-white p-4 inline-block rounded-md">
+                  <QRCodeSVG
+                    id="order-qrcode"
+                    value={qrCodeData}
+                    size={200}
+                    level="H" // 高い誤り訂正レベル
+                    includeMargin={true}
+                  />
+                </div>
+                <Button
+                  className="mt-4 flex items-center"
+                  onClick={handleDownloadQR}
+                >
+                  <Download className="mr-2 h-4 w-4" />
+                  QRコードをダウンロード
+                </Button>
               </div>
             </CardContent>
           </Card>
