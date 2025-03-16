@@ -10,6 +10,10 @@
 
 [https://manaphy-nine.vercel.app/](https://manaphy-nine.vercel.app/)
 
+## Product Page - Akindo
+
+[農家・物流・購入者をつなぐ次世代流通基盤](https://app.akindo.io/communities/kzKmM4XWVIVM6rmV/products/xKzBdzXWMhNljEmk)
+
 ## How to work
 
 - **セットアップ**
